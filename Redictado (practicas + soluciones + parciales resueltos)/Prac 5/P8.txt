@@ -1,0 +1,9 @@
+A) datos = 20*2
+   punt = 4
+   i,j = 4 + 4
+   v = 20*2
+   v2 = 20*2
+   vect = 40
+   pvect = 4
+   i = 4
+B) 

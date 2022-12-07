@@ -1,0 +1,17 @@
+A) Lee numeros y los agrega en la lista hasta que el numero leido sea 0
+B)  48 (4TO INGRESADO) 13 (3ERO INGRESADO) 21 (2DO INGRESADO) 10 (1ERO INGRESADO) Ya que utiliza un agregarAdelante
+C) procedure imprimir (l : lista);
+   begin 
+    while (l <> nil) do begin
+     wrilten (l^.num);
+     l := l^.sig;
+   end;
+d) procedure incrementar (var l : lista; valor : integer);
+begin
+ writeln ('Ingrese un valor');
+ readln (valor);
+  while (l <> nil) do begin 
+   l^.num := l^.num + valor
+   l := l^.sig;
+  end;
+end;

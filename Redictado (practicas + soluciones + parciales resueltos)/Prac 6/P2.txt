@@ -1,0 +1,9 @@
+1) A agregarAdelante le falta el new (aux) para el nuevo nodo
+2) A generarLista le falta leerPersona para salir del while
+3) El parametro p de leerPersona tiene que pasarse por referencia
+4) A agregarAdelante se le debe pasar la lista por referencia
+5) En generarLista,la variable p debe ser de tipo persona
+6) En el P.P lista debe ser igual a nil
+7) En generarLista esta mal invocado dni (es p.dni y deberia ser l^.p.dni)
+8) En imprimirInformacion , se accede mal a nombre y apellido (l^.nombre y l^.apellido respectivamente) y deberia ser l^.dato.nombre y l^.dato.apellido
+9) 
