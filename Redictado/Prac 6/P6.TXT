@@ -1,0 +1,150 @@
+program p6;
+type
+ rangoE = 1..7;
+ sonda = record 
+    nom : string;
+    cantMeses : integer;
+    costoCons : real;
+    costoMan : real;
+    rangoElec : rangoE;
+  end;
+  vecRango = array [rangoE] of integer;
+  lista = ^nodo;
+  nodo = record 
+   dato : sonda;
+   sig : lista;
+  end;
+  
+  
+procedure leerS (var s : sonda);
+begin
+ write ('Ingrese el nombre de la sonda : ');
+ readln (s.nom);
+ write ('Ingrese la duracion de la mision : ');
+ readln (s.cantMeses);
+ write ('Ingrese consto de construccion : ');
+ readln (s.costoCons);
+ write ('Ingrese el costo de mantenimiento : ');
+ readln (s.costoMan);
+ write ('Ingrese el especto electromagnetico de la sonda : ');
+ readln (s.rangoElec);
+end;
+
+procedure inicializarVecRangos (var vR : vecRango);
+var
+ i : integer;
+begin
+ for i := 1 to 7 do 
+  vR [i] := 0;
+end;
+
+procedure agregarAdelante (var l : lista; s : sonda);
+var
+ nuevo : lista;
+begin
+ new (nuevo); 
+ nuevo^.dato := s; 
+ nuevo^.sig := l; 
+ l := nuevo;
+end;
+
+procedure cargarLista (var l : lista; s : sonda);
+begin
+ repeat 
+  leerS (s);
+  agregarAdelante (l,s);
+until (s.nom = 'GAIA');
+end;
+
+procedure masCostosa (l : lista ; var masCost : real; var nombreMasCost : string);
+var
+ calculoTotal : real;
+begin
+ calculoTotal := (l^.dato.costoCons + l^.dato.costoMan) * l^.dato.cantMeses;
+  if (calculoTotal > masCost) then begin
+   masCost := calculoTotal;
+   nombreMasCost := l^.dato.nom;
+  end;
+end;
+
+procedure cargarVector (var vR : vecRango ; l : lista);
+var
+ i  : integer;
+begin
+
+ for i := 1 to 7 do begin 
+  if (l^.dato.rangoElec = i) then 
+   vR [i] += 1;
+ end;
+end;
+
+procedure sondasSuperan (l : lista; sondasTotal,totalDuracion : integer; var cantSupera : integer);
+var
+ prom : real;
+begin
+ prom := totalDuracion / sondasTotal; // Promedio de duracion
+  if (l^.dato.cantMeses > prom) then 
+   cantSupera := cantSupera + 1;
+end;
+
+
+procedure mayorCostoCons (l : lista; costoTotalDeConst : real; sondasTotal : integer; var nombreSupera : string);
+var
+ prom : real;
+begin
+ prom := costoTotalDeConst / sondasTotal;
+  if (l^.dato.costoCons > prom) then 
+   nombreSupera := l^.dato.nom;
+  
+end;
+
+procedure imprimirVector (vR : vecRango);
+var
+ i : integer;
+begin
+ for i := 1 to 7 do 
+  writeln ('Al rango : ',i, ' lo estudian ',vR[i], ' sondas ');
+end;
+
+procedure recorrerABC (l : lista);
+var
+ totalConst , masCosto : real;
+ sondaTotal,duraTotal,cantidadSupera: integer;
+ nombreSupe , nombreMasCosto: string;
+ vR : vecRango;
+begin
+ totalConst := 0; sondaTotal := 0; duraTotal := 0; cantidadSupera := 0; masCosto := -9999; 
+  inicializarVecRangos (vR);
+  while (l <> nil) do begin
+    sondaTotal := sondaTotal + 1; // total de sondas
+    totalConst := totalConst + l^.dato.costoCons;  // Costo de construccion total
+    duraTotal := duraTotal + l^.dato.cantMeses; // total de duracion de la mision
+    masCostosa (l,masCosto,nombreMasCosto);
+    sondasSuperan (l,sondaTotal,duraTotal,cantidadSupera);
+    mayorCostoCons (l,totalConst,sondaTotal,nombreSupe);
+       writeln ('La sonda ' , nombreSupe , ' supera el promedio de coste de construccion' );
+    cargarVector (vR,l);
+  l := l^.sig;
+ end;
+    imprimirVector (vR);
+    writeln ('La sonda mas costosa es ',nombreMasCosto);
+  writeln ('La cantidad de sondas que superan el promedio de duracion es ',cantidadSupera);
+end;
+
+
+var
+ pri : lista;
+ s : sonda;
+begin 
+ pri := nil;
+ cargarLista (pri,s);
+ recorrerABC (pri);
+end.
+   
+ 
+ 
+  
+
+ 
+
+  
