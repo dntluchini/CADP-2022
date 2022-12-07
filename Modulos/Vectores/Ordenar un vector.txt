@@ -1,0 +1,13 @@
+*Es un algoritmo de diml pasadas
+Se elige el minimo en el vector a partir de la posicion (i+1) hasta el final
+Si el minimo del vector es mas chico que lo que esta en i del vector,se intercambia
+1) 3 rangos,y el item del vector a ordenar como variables
+2) rango i :  Desde 1 hasta el anteultimo elemento (diml-1) (Buscamos el minimo entre v[p], v[i] y v[n])
+   p := i;
+    desde j := i + 1 hasta diml 
+     si v [j] < v[p] entonces
+      p := j; (intercambiamos v[i] y v[p])
+
+3) item := v[p]
+   v[p] := v[i]
+   v[i] := item

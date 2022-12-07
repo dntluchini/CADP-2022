@@ -1,0 +1,12 @@
+procedure autosKmPar (con: autos; var aP: autos; var dL: integer); 
+var i: integer; 
+begin 
+dL:= 0; 
+for i:= 1 to cant do 
+ begin 
+ if(con[i].kms MOD 2 = 0) then 
+  begin dL:= dL + 1; 
+  ap [dL ]:= con [ i ]; 
+  end; 
+ end; 
+end;

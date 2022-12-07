@@ -1,0 +1,32 @@
+1) Verifico si hay espacio y verifico si la posicion para insertar es valida (pos <= dimf/diml)
+2) Hago un corrimiento de elementos (for i := diml donwto pos do v[i+1] := v[i])
+3) Inserto el dato en pos
+4) Aumento la diml
+
+
+procedure insertar (var ve : vector; var diml : integer);
+var
+ i , pos,dato: integer;
+begin 
+ if (pos <= diml) and (pos >= 1) and (diml <= dimf) then begin
+   for i := pos downto diml do 
+    v [i+1] := v[i];
+   v [pos] := dato;
+   diml := diml + 1;
+  end;
+end;
+
+
+
+procedure insertar (var ve : vector; var diml : integer);
+var
+ i , pos,dato: integer;
+begin 
+ if (diml + 1) <= dimf) and (pos => 1) and (pos <= diml)) then begin *
+   for i := diml downto pos do *
+    v [i+1] := v[i];
+   v [pos] := dato;
+   diml := diml + 1;
+  end;
+end;
+

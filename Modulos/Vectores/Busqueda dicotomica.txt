@@ -1,0 +1,40 @@
+* Se divide el vector en 2 para ubicar en que parte esta,si en la 1era o 2da parte
+1) Inicializo el 1ero = 1, el ult = diml, y la mitad = (pri + ult) div 2
+2) Mientras pri sea menor o igual a ult y el dato sea <> de vec[mitad] avanzo en el vector
+3) Si el dato es < vec[mitad] entonces ult = mitad - 1 . Sino, 1ero = medio + 1
+4) Re-inicializo medio = (pri+ult) div 2 (Ya que alguno de los valores cambio)
+5) Si el 1ero es menor o igual al ultimo y el dato es igual a vec [mitad] encontes encontre el elemento
+
+
+function busquedaDi (v : vector; diml : integer) : boolean;
+var
+ pri,ult,mitad : vector;
+ dato : integer;
+begin
+ pri := 1; ult := diml; mitad := (pri + ult) div 2;
+  while (pri <= ult) and (dato <> v [mitad]) do begin
+   if (dato < v [mitad]) then 
+    ult := mitad - 1
+   else
+    pri := mitad + 1;
+   mitad := (pri + ult) div 2;
+  busquedaDi := ((pri <= ult) and (dato = v [mitad]));
+end;
+
+
+
+
+function busquedaDi (v : vector; diml : integer) : boolean;
+var
+ pri,ult,mitad , dato : integer; *
+begin
+ pri := 1; ult := diml; mitad := (pri + ult) div 2;
+  while (pri <= ult) and (dato <> v [mitad]) do begin
+   if (dato < v [mitad]) then 
+    ult := mitad - 1
+   else
+    pri := mitad + 1;
+   mitad := (pri + ult) div 2;
+  busquedaDi := ((pri <= ult) and (dato = v [mitad]));
+ end;
+end;

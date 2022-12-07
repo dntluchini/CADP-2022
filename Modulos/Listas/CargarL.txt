@@ -1,0 +1,34 @@
+procedure cargarL (var l : lista);
+var
+ varAcargar : tipoVar;
+begin
+ corteDeControl (while/repeat until)
+  leerV (varAcargar);
+  tipoDeAgregado (agregarAdelante,agregarAtras,insertarOrdenado);
+ end;
+
+
+procedure cargarLWhile (var l : lista); *NO SE PROCESA EL DATO DEL CORTE
+var
+ varAcargar : tipoVar;
+begin
+ leerV (varAcargar);
+  while (condicionDelCorte) do begin 
+  tipoDeAgregado (agregarAdelante,agregarAtras,insertarOrdenado);
+  leerV (varAcargar);
+ end;
+end;
+
+
+procedure cargarRU (var l : lista); *EL DATO DEL CORTE SE PROCESA
+var
+ varAcargar : tipoVar;
+begin
+ repeat 
+  leerV (varAcargar);
+  tipoDeAgregado (agregarAdelante,agregarAtras,insertarOrdenado);
+ until (condicionDelCorte)
+end;
+
+
+

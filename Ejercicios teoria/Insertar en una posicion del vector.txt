@@ -1,0 +1,25 @@
+procedure Insertar (var v: vector; var dL: integer; nom. nombre); 
+var i: integer; 
+begin for i:= dL downto pos 
+  do v [ i + 1 ] := v [ i ]; 
+  v [ pos ]:= nom; 
+  dL:= dL + 1; 
+ end;
+
+ var pos: integer; 
+ begin if (dL < cant) then begin ok:= true; 
+ pos:= BuscarPosicion (v, dL, nom); 
+ Insertar (v, dL, pos, nom); 
+ end 
+ else ok:= false; 
+ end.
+
+
+ procedure Insertar (var v: vector; var dL: integer; pos: integer; nom. nombre); 
+ var i: integer; 
+ begin 
+  for i:= dL downto pos do 
+   v [ i + 1 ] := v [ i ]; 
+   v [ pos ]:= nom; 
+   dL:= dL + 1; 
+  end;

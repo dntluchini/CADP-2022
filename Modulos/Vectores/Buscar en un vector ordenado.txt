@@ -1,0 +1,17 @@
+1) Inicializar pos en 1
+2) Mientras pos sea menor a diml y el dato a buscar sea mayor a v[pos], avanzar en el vector
+3) Incrementar pos
+4) Si la posicion es menor o igual a la diml y v[pos] = dato entonces encontre en elemento
+
+
+
+function buscarVordenado (v : vector; diml : integer) : boolean;
+var
+ num , i : integer;
+begin 
+ i := 1;
+  while (i < diml) and (num > v[i]) do begin
+    i := i + 1;
+  end;
+  buscarVordenado := ((i <= diml) and (v[i] = num));
+end;

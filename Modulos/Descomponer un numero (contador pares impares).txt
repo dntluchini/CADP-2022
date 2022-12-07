@@ -1,0 +1,15 @@
+function descomponer(num : integer) : boolean;
+var
+ dig,pares,impares : integer;
+begin
+ impares := 0; pares := 0;
+ while (num <> 0) do begin
+  dig := num mod 10;
+   if (dig mod 2) then 
+    pares := pares + 1
+   else
+    impares := impares + 1;
+  num := num div 10;
+ end;
+  descomponer := (imapares = pares);
+end;

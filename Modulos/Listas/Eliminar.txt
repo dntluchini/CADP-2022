@@ -1,0 +1,132 @@
+1) Act y ant apuntan al mismo nodo
+2) Mientras la lista no termine y no se haya encontrado el dato a eliminar,recorro la lista
+3) Si encuentro el dato,entonces encontre = true,sino sigo recorriendo la lista
+4) Sale de la lista cuando termina o cuando encontre = true,si encontre = true,verifico si es el 1er elemento,si lo es,L apunta al siguiente nodo de act,sino el siguiente de ant apunta al sig de act
+5) Elimino act
+
+Procedure eliminar(var pI:listaE valor:integer); *CORRECTO
+Var
+ actual,ant:listaE;
+Begin
+ actual:=p;
+while (actual <> nil) and (actual^.elem <> valor) do begin
+   ant:=actual; actual:= actual^.sig;
+ end;
+if (actual <> nil) then
+  if (actual = pI) then begin
+   pI:= pI^.sig; dispose (actual);
+  end
+else begin
+ ant^.sig:= actual^.sig;
+ dispose (actual);
+ end;
+End;
+
+
+
+
+
+
+procedure eliminar (var l : lista; datoAEliminar : integer);
+var
+ ant,act : lista;
+ ok : boolean;
+begin
+ ant := l;
+ act := l;
+ ok := false;
+  while (l <> nil) and (not ok) do begin
+   if (l^.dato = datoAEliminar) then 
+    ok := true
+   else
+    ant := act;
+    act := act^.sig;
+   end;
+    if (ok = true) then 
+     if (act = l) then 
+      l := l^.sig
+     else
+      ant^.sig := act^.sig;
+     dispose (act);
+end; 
+
+
+
+
+procedure eliminar (var l : lista; datoAEliminar : integer);
+var
+ ant,act : lista;
+ ok : boolean;
+begin
+ ant := l;
+ act := l;
+ ok := false;
+  while (l <> nil) and (not ok) do begin
+   if (l^.dato = datoAEliminar) then 
+    ok := true
+   else
+    ant := ant^.sig; * 
+    act := act^.sig;
+   end;
+    if (ok = true) then *
+     if (act = l) then 
+      l := l^.sig
+     else
+      ant := act^.sig; *
+     dispose (act);
+ end;
+end; 
+
+
+
+1) Act y ant apuntan al mismo nodo
+2) Mientras la lista no termine y no se haya encontrado el dato a eliminar,recorro la lista
+3) Si encuentro el dato,entonces encontre = true,sino sigo recorriendo la lista
+4) Sale de la lista cuando termina o cuando encontre = true,si encontre = true,verifico si es el 1er elemento,si lo es,L apunta al siguiente nodo de act,sino el siguiente de ant apunta al sig de act
+5) Elimino act
+
+
+
+procedure eliminar (var l : lista; numEliminar : integer);
+var
+ ant,act : lista;
+ ok : boolean;
+begin
+ ant := l;
+ act := l;
+ ok := false;
+  while (act <> nil) and (not ok) do begin 
+   if (act^.dato = numeliminar) then 
+    ok := true
+  else begin
+   ant := act;
+   act := act^.sig;
+ end;
+  if (ok = true) then 
+   if (act = l) then 
+    l := act^.sig
+  else
+   ant := act^.sig;*
+   dispose (act);
+ end;
+end;
+
+
+Procedure eliminar(var pI:listaE valor:integer);
+Var
+ actual,ant:listaE;
+Begin
+ actual:=p;
+ while (actual <> nil) do begin
+  if (actual^.elem <> valor) then
+  ant:= actual; 
+  actual:= actual^.sig;
+else begin
+ if (actual <> nil) then begin
+  if (actual = pI) then
+   pI:= pI^.sig
+ else
+  ant^.sig:= actual^.sig;
+  actual:= ant;
+  dispose (actual);
+end;

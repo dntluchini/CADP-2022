@@ -1,0 +1,5 @@
+
+if (diml < dimf) {Comparo la dimension logica con la fisica,si dimL es menor que dimf ejecuto el if,y actualizo el dimL hasta que llene el vector (o no)}
+then begin
+diml := diml + 1;
+v [diml] := dato;

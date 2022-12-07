@@ -1,0 +1,13 @@
+-Al no saber la cantidad exacta podemos hacer una lista con vectores , si puede venir mas de 1 ves , es una lista.
+-Se dispone a los fines de parcial implica:
+1) Que se declara en la sección type la estructura de datos (lo que sea que se disponga lista o vector)
+2) En el principal la declaras como variable.
+3) En el principal (di fuera una lista pones el modulo cargarLista (L) le pasas la lista y al lado le pones {se dispone} )
+   pero no haces el modulo cargarLista cargarVector 
+   lo que no podes hacer es no declararlo. te ahorra el cargarlo nada más.
+-Para acumular contadores fijos : ej medios de pago tendriamos que tendriamos que usar un vector contador.
+-Cuando no se sabe la cantidad de veces que se lee un valor usar una lista  
+-Duracion promedio,recorrer lista 2 veces
+-Agregar en el orden q fue leida (agregaratras)
+-Si tengo q usar un campo de un registro,pasar solo ese campo como parametro
+-Hacer mini modulos segun los incisos para que a la hora de recorrer la lista / vector se haga mas facil y prolijo el modulo propio

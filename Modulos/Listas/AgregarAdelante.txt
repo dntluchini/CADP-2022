@@ -1,0 +1,15 @@
+1) Creo el nodo
+2) Le asigno el dato
+3) El nuevo nodo apunta a la lista
+4) La lista apunta al nuevo nodo
+
+
+procedure agregarAdelante (var l : lista; p : record) *CORRECTO
+var
+ nue : lista; // Elemento a agregar
+begin 
+ new (nue);
+ nue^.dato := p;
+ nue^.sig := l;
+ l := nue;
+end;

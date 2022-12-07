@@ -1,0 +1,195 @@
+{Una compañía de telefonía celular dispone de una estructura de datos con información de
+todas las facturas emitidas durante los años 2019 y 2020 para sus 3400 clientes. 
+De cada factura se conoce 
+    el mes (1 a 12), 
+    el año (2019 ó 2020), 
+    el código del cliente 
+    y el monto facturado. 
+La información se encuentra ordenada por código del cliente.
+
+a) Realizar un módulo que retorne en una estructura de datos la información de los clientes. 
+De cada cliente se conoce 
+    su código (entre 1 y 3400), 
+    nombre y apellido, 
+    DNI
+    localidad. 
+La información se ingresa por teclado sin ningún orden en particular.
+
+b) Realizar un módulo que reciba la información de las facturas, la información de los
+clientes y retorne una estructura de datos con todos los clientes que existan y la informacion
+nombre,apellido y DNI del cliente, 
+monto total facturado al cliente,y 
+mes, año y monto de cada factura emitida al cliente. 
+
+Esta información debe estar ordenada por monto de las facturas.
+Nota: incluir el programa principal donde se invoquen los módulos implementados.}
+program compania_telefonica;
+const 
+     dimf = 3400;
+type
+     rango_mes = 1..12;
+     factura = record
+                 mes: rango_mes;
+                 anio: integer;
+                 cod_cli: integer;
+                 monto_facturado: real;
+              end;
+
+     lista = ^nodo;
+     nodo = record
+             dato: factura;
+             sig: lista;
+            end;
+
+     cadena50 = string[50];
+     rango_codigo = 1..dimf;
+     cliente = record
+                 codigo: rango_codigo; 
+                 nomApe: cadena50; 
+                 DNI: integer;
+                 localidad: cadena50; 
+                end;
+     vector_clientes = array [1..dimf] of cliente;
+     
+     nueva_estructura= record
+                         nombre_apellido: cadena50;
+                         monto_total_f: real;
+                         dni_cliente: integer;
+                         facturas: lista; //opcion 1: reutilizar mi lista de facturas
+                         facturas: listaF//opcion2: crear una nueva estructura 
+    end;
+    listaF = ^facturaNueva;
+    facturaNueva = record;
+         mes: rango_mes;
+         anio: integer;
+         monto_facturado: real;
+    end;
+     nueva_lista = ^nuevo_nodo;
+{--------- M O D U L O S ---------}
+// leer la factura
+procedure leer_factura (var f: factura); // se dispone
+
+// inserta la factura en la lista se ingresa ordenado x codigo de cliente
+procedure insertar_en_lista (var l: lista; f:factura); // se dispone
+
+// cargar la lista de facturas
+procedure cargar_lista (var l: lista); // se dispone
+
+// leemos un cliente
+procedure leer_cliente (var c: cliente);
+begin
+     writeln ('--------- codigo ---------');
+     readln(c.codigo);
+     writeln ('--------- nombre y apellido ---------');
+     readln (c.nomApe);
+     writeln ('--------- numero de dni ---------');
+     readln (c.DNI); 
+     writeln ('--------- localidad ---------');
+     readln (c.localidad);
+end;
+
+// cargamos el vector de clientes : sin ningun orden
+procedure cargar_vector (var v: vector_clientes);
+var 
+     i: integer;
+begin
+     for i := 1 to dimf do
+     begin
+         leer_cliente (c); 
+         v[i] := c;
+      end;
+end;
+
+//
+function existe_codigo (v[l^.dato.cod_cli].codigo,codigo)
+
+// recorremos toda la info para hacer una nueva estructura
+procedure procesar_informacion (l: lista; v:vector_clientes; codigo: integer; var nl: nueva_lista);
+var
+    
+begin
+    
+end;
+{b) Realizar un módulo que reciba la información de las facturas, la información de los
+clientes y un código de cliente (que podría no existir), y retorne una estructura de datos
+con nombre, apellido y DNI del cliente, monto total facturado al cliente, y mes, año y
+monto de cada factura emitida al cliente. 
+Esta información debe estar ordenada por monto de las facturas.}
+     informar_nueva_estructura (NE);
+end;
+
+//l es lista de facturas - v de vector de clientes
+{
+                informacion de la factura // ordenado por cod cliente
+                mes: rango_mes;
+                 anio: integer;
+                 cod_cli: integer;
+                 monto_facturado: real;
+                 
+                 informacion del cliente:
+                codigo: rango_codigo; 
+                 nomApe: cadena50; 
+                 DNI: integer;
+                 localidad: cadena50; 
+                 
+                 nuevo registro de la nueva lista
+                 mes , anio, monto_facturado
+}
+procesar_informacion (l:lista, v:vector_clientes,codigo:integer,var nL:nueva_estructura);
+var 
+    laux:listaF;
+begin
+    listaF:=nil;
+    if (codigo >=1 ) & (codigo <= 3400) then begin
+            codActual:= l^.dato.cod_cli; //codigo actual de cliente
+            while (l<>nil)&(l^.dato.cod_cli < codigo) do begin //salgo porque me pase del codigo o bien porq lo encontr
+                l:=l^.sig;
+            end;
+            if (l = nil) writeln ('no existe el codigo de cliente')
+            else 
+                if (l^.dato.cod_cli > codigo) then writeln('no esta el codigo')
+                else 
+                    if (l^.dato.cod_cli = codigo) then begin //codigo encontrado
+                       codActual:=l^.dato.cod_cli;
+                       montoAcumulado:=0;
+                       while (l<>nil)&(codActual = l^.dato.cod_cli) do begin //proceso a mi cliente codigo
+                            montoAcumulado:= montoAcumulado + l^.dato.monto_facturado;
+                            agregarLista(laux,l^.dato); //lista de factura para un cliente
+                            l:=l^.sig;
+                       end;
+                       //crear la nueva_estructura
+                       nueva_estructura.monto_total := montoAcumulado;
+                       //buscar en el vector_clientes de acuerdo a codActual
+                       buscarVector(v,codActual,nueva_estructura)
+                                //nueva_estructura.nombre_apellido:= v[i].nombre_apellido
+                    nueva_estructura.facturas:=laux;
+                    end;
+                        
+        end;
+        
+    else    
+        writeln('el codigo no existe');
+    
+end;
+{--------- P R O G R A M A   P R I N C I P A L ---------}
+
+var
+     l: lista;
+     nl: nueva_estructura;
+     v: vector_clientes;
+     codigo: integer;
+begin
+     l := nil;
+     nl:nil;
+     cargar_lista(l); // se dispone
+     cargar_vector(v); // para hacer el punto A
+     writeln ('ingrese un nuevo codigo de cliente');
+     readln(codigo);
+     procesar_informacion(l,v,codigo,nl); // para el punto B
+end.
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+const
+ dimf = 1999;
+procedure inicializarV (var v : vector);
+var
+i : integer;
+begin
+ for i := 1 to dimf do 
+  v [i] := 0;
+end;
+
+procedure inicializarVDL (var v : vector; diml : integer;);
+var
+i : integer;
+begin
+ for i := 1 to diml do 
+  v [i] := 0;
+end;

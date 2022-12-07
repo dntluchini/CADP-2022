@@ -1,0 +1,18 @@
+1) Verifico si existe lugar (diml + 1 < dimf)
+2) Agrego el dato
+3) Aumento la diml
+
+
+procedure agrearV (var v : vector ; var diml : integer);
+var
+ num : integer;
+begin 
+ readln (num);
+  while ((diml +1) < dimf) do begin 
+   v [diml] := num;
+   diml := diml + 1;
+   readln (num);
+  end;
+end;
+
+ 

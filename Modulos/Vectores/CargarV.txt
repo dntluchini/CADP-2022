@@ -1,0 +1,27 @@
+procedure cV (var v : vector; num : integer);
+var
+ i : integer;
+begin 
+ for i := 1 to dimf do 
+  v [i] := num;
+end;
+
+
+procedure cVreg (var v : vector; num : integer);
+var
+ i : integer;
+begin 
+ for i := 1 to dimf do begin
+ leerN (num);
+ v [i] := num;
+end;
+
+
+procedure cVDiml (var v : vector; num : integer; var diml : integer);
+begin 
+ leerN (num);
+  while (diml < dimf) and (num <> -1) do begin 
+   v [diml] := num;
+   leerN (num);
+ end;
+end;

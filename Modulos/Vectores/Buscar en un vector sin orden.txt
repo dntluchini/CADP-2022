@@ -1,0 +1,20 @@
+1) Setteo pos en 1
+2) Verifico pos
+3) Si vec[pos] = dato , entonces encontro el dato
+4) Sino,incremento pos
+
+
+function buscarVdes (v : vect; diml : integer) : boolean;
+var
+ pos , num: integer;
+ esta : boolean;
+begin
+ pos := 1; esta := false;
+  while ((pos < diml) and (not esta)) do begin 
+   if (v[pos] = num) then 
+    esta := true
+   else
+    pos := pos + 1;
+  end;
+ buscarVdes := esta;
+end;

@@ -1,0 +1,28 @@
+{Escriba un programa que lea números e informe la cantidad de números con al menos 2 dígitos pares. La lectura finaliza con el número 88. Para verificar si el número leído tiene al menos dos dígitos pares debe implementarse un módulo.}
+
+program ejercicio1; 
+const fin = 88; 
+function cumple (num: integer): boolean; 
+var dig, cant: integer; 
+begin cant:= 0; 
+ while (num <> 0) and (cant < 2) do                                                         {num-> 23441 -> 2344 ->234 ->23 -> 2 -> 0}  
+ begin                                                                                      {dig-> 1 -> 4 -> 4 -> 3 -> 2} 
+  dig:= num MOD 10; if (dig MOD 2 = 0) then 
+   cant:= cant+1; 
+   num:= num DIV 10; 
+   end; 
+   cumple:= (cant >= 2); 
+ end;
+ var cant, nro: integer; 
+  begin 
+   cant:= 0; 
+   write ('Ingrese un numero: '); 
+   readln (nro); 
+   while (nro <> fin) do 
+    begin 
+      if ( cumple (nro) ) then cant:= cant +1; 
+      write ('Ingrese un numero: '); 
+      readln (nro); 
+    end; 
+     write ('Cantidad de numeros con al menos 2 digitos pares: ', cant); 
+  end.

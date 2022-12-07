@@ -1,0 +1,32 @@
+1) Verifico la posicion ((pos => 1) and (pos <= dimf))
+2) Hago el corrimiento de los elementos (for i := pos to (diml-1) do v[i] := v[i+1])
+3) Disminuyo la diml
+
+procedure borrar (var v : vector; var diml : integer; var ok : boolean);
+var 
+ i , pos: integer;
+begin
+ ok := false;
+ pos := 1;
+  while ((diml + 1) < dimf) do begin 
+   for i := pos to (diml-1) do 
+     v [i] := v[i+1] 
+     diml := diml - 1;
+     ok := true;
+    end;
+end;
+
+
+procedure borrar (var v : vector; var diml : integer; var ok : boolean);
+var 
+ i , pos: integer;
+begin
+ ok := false;
+ pos := 1;*
+  if ((pos => 1) and (pos <= dimf)) then begin *
+   for i := pos to (diml-1) do 
+     v [i] := v[i+1] 
+     diml := diml - 1;
+     ok := true;
+    end;
+end;

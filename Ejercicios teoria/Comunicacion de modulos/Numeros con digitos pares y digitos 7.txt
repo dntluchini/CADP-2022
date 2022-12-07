@@ -1,0 +1,36 @@
+{Escriba un programa que lea números e informe la cantidad de números con al menos 2 dígitos pares y la cantidad de dígitos 7 que hay entre todos los números. La lectura finaliza con el número 88. Para verificar si el número leído tiene al menos dos dígitos pares debe implementarse un módulo.}
+
+program ejercicio2; 
+const fin = 88; 
+procedure ProcesarNumero (num: integer; var cumple: boolean; var cant7: integer); 
+var dig, cant: integer; 
+begin cant:= 0; 
+ while (num <> 0) do                     {num-> 73441 -> 7344 ->734 ->73 -> 7 -> 0 } 
+ begin                                   {dig-> 1 -> 4 -> 4 -> 3 -> 7} 
+ dig:= num MOD 10; 
+  if (dig MOD 2 = 0) then 
+  cant:= cant+1 
+ else 
+   if (dig = 7) then 
+    cant7:= cant7 + 1; 
+    num:= num DIV 10; 
+  end; 
+  cumple:= (cant >= 2); 
+end;
+var cant, nro, cant7: integer; 
+cumple: boolean; 
+begin 
+ cant:= 0; 
+ cant7:= 0; 
+ write ('Ingrese un numero: '); 
+ readln (nro); 
+ while (nro <> fin) do 
+ begin 
+  ProcesarNumero (nro, cumple, cant7); 
+  if ( cumple ) then cant:= cant +1; 
+  write ('Ingrese un numero: '); 
+  readln (nro); 
+ end; 
+ writeln ('Cantidad de numeros con al menos 2 digitos pares: ', cant); 
+ writeln ('Cantidad de digitos 7 entre todos los numeros leidos: ', cant7); 
+end.

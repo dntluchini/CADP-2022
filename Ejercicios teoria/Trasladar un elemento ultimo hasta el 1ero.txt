@@ -1,0 +1,7 @@
+begin
+ if (dl < df) and (pos >= 1 and pos <= dl) then begin
+  for i := dl donwto pos do
+   con [i + 1] := con [i];
+  con [pos] := a;
+  dl := dl + 1;
+ end;

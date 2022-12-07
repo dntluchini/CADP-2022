@@ -1,0 +1,151 @@
+const
+ dimf = 20;
+ categoria = 1..20; {MAL , VA DECLARADO EN EL TYPE}
+type
+ panaderia = record // Se dispone
+  precio_kilo : real;
+  nombre : str50; {MAL , NO ESTA DECLARADO STR50}
+ end;
+lista = nodo^;
+ nodo = record
+  dato : panaderia; {MAL , DEBE SER DE TIPO COMPRA}
+  sig : lista;
+ end;
+vector = array [1..dimf] of cat {MAL , NO ESTA DECLARADO EL VECTOR CONTADOR}
+compra = record 
+  dni : longint;
+  cat : categoria;
+  kilos_comprados : real;
+ end;
+
+procedure leer (var c : compra)
+begin
+ writeln ('Ingrese su dni');
+ readln (c.dni);
+ while (c.dni <> -1) do begin {MAL,DEBE IR UN IF EN LUGAR DE UN WHILE}
+ writeln ('Ingrese la categoria del producto');
+ readln (c.cat);
+ writeln ('Ingrese la cantidad de kilos comprados');
+ readln (c.kilos_comprados);
+ end;
+end;
+
+procedure inicializar_vector (var vc : vector); {MAL , NO ESTA DECLARADO COMO SUBRANGO EL VECTOR CONTADOR DE COMPRAS}
+var
+ i : integer;
+begin
+ for i:= 1 to dimf do 
+  begin 
+   vc [i] := 0;
+  end;
+ end;
+
+
+
+procedure cargar_lista (var l : lista);
+ var
+  c : compra;
+  aux : lista;
+ begin
+  new (l) ; {MAL , SE PIERDE EL PUNTERO INICIAL}
+  l^.dato := c; {MAL , ASIGNA ALGO QUE TODAVIA NO LLEGO}
+  l^.sig := nil;
+  while (l <> nil) do begin
+   leer (c);
+   aux := l;
+  end;
+  l := l^.sig;
+ end;
+
+
+  {EL MODULO ENTERO ESTA MAL,NO SE GUARDA EL PUNTERO INICIAL,NI SE UTILIZA UN AGREGAR ADELANTE. EL PROCESO CORRECTO SERIA,GUARDAR EL PUNTERO INICIAL,HACIENDO 
+  1) PROCESO DE AGREGAR ADELANTE :  procedure agregarAdelante(var  L : lista; c : compra);
+                                                 var 
+                                                 aux : lista;
+                                                 begin
+                                                   new(aux); aux^.dato := c;
+                                                   aux^.sig := L; 
+                                                   L := aux;
+                                                 end; 
+ 2) A LA HORA DE HACER CARGAR_LISTA : HACER UN NIL DE L Y LLAMAR A LEER PARA QUE LEA LOS DATOS
+ 3) HACER UN CORTE DE CONTROL  , SERIA WHILE (C.DNI <> -1) , AHI LEEMOS DE NUEVO LOS REGISTROS Y HACEMOS UN AGREGAR ADELANTE.
+ RESUMEN : 1) GUARDAMOS EL PUNTERO EN UNA VARIABLE AUXILIAR. (AGREGAR ADELANTE)
+           2) L := NIL
+           3) LEEEMOS EL REGISTRO.
+           4) MIENTRAS DNI <> -1 : agregamos a la lista el elemento y  volvemos a leer.
+
+procedure vector_categorias (vc : vector);
+var
+ cat : categoria;
+begin
+ vc [cat] := vc [cat] + 1; {NO SE SABE EL VALOR DE LA CATEGORIA,AL HABER DEFINIDO MAL EL VECTOR CONTADOR}
+end;
+
+
+procedure impares (c:compras; var cant_compras_imp : integer);
+var
+ num , dig , impares : integer;
+begin
+ cant_compras_impares := 0; {MAL , CADA VEZ QUE PASA POR EL WHILE SE PASA EL VALOR 0}
+ dig := c.dni mod 10;
+ while (dig <> 0) do 
+  begin
+   if (dig mod 2) <> 0 then 
+    impares := impares + 1;
+    dni := dni div 10;
+   end;
+   if (impares <= 5) then
+    cant_compras_impares := cant_compras_impares + 1;
+   impares := 0; {MAL , INNECESARIO}
+  end;
+
+
+
+ procedure cantdinero (p : panaderia ; c : compra ; var dinero : real);
+ begin
+  dinero := p.precio_kilo * c.kilos_comprados;
+ end;
+
+ procedure menos_dinero (var menor_dinero : real; var dni_menor : longint); {MAL , TIENE QUE RECORRER LA LISTA PARA QUE CLIENTE GASTO MENOS}
+ var
+  din : real; p : panaderia ; c : compra;
+ begin
+  min := 9999;
+  cantdinero (p,c,din);
+  if (din<min) then begin 
+   menor_dinero := din;
+   dni_menor := c.dni;
+  end;
+ end;
+
+procedure imprimir_ventas_cat (vc : vector); {MAL , NO ES LO QUE PIDE EL ENUNCIADO}
+var
+ i : integer;
+ cat : categoria;
+begin
+ for i := 1 to dimf do 
+  begin
+   vector_categoria (vc);
+   writeln ('La categoria',cat, ' tuvo ',vc[cat], 'ventas');
+  end;
+ end;
+
+
+
+ P.Principal
+ var
+  c : compra; l : lista; vc : vector ; p : panaderia;
+  dinero,dinero_menor : real;
+  dni : longint;
+  cant_compras_impar : integer;
+ begin
+  l := nil;
+  cargar_lista (l);
+  menos_dinero (dinero_menor,dni);
+   writeln ('El dni con menor dinero gastado fue ',dni);
+  inicializar_vector (vc);
+  imprimir_ventas_cat (vc);
+  impares (c,cant_compras_impar);
+  writeln ('la cantidad de compras totales fueron ',cant_compras_impar);
+ end.
+ 

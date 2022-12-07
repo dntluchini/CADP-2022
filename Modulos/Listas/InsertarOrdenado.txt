@@ -1,0 +1,130 @@
+1) Creo el nuevo nodo
+2) Inserto el dato
+3) El puntero del nuevo nodo esta vacio (nil)
+4) Si la lista esta vacia,l apunta al nuevo nodo
+5) Si la lista NO esta vacia,el actual y el anterior apuntan al primer nodo (L)
+6) Mientras actual sea <> nil (que no termine la lista) y actual^.dato <> nuevo^.dato (elemento a ordenar) recorro la lista (ant := act
+       act := act^.sig);
+7) Si ant = act,el nuevo nodo se inserta al principio (en L)
+8) Sino,el nuevo nodo se ubica en el medio o en el final (ant^.sig := nue
+                                                          nue^.sig := act;)
+
+
+procedure insertarOrdenado (var l : lista; p : record);
+var
+ nue,act,ant : lista;
+begin 
+ new (nue);
+ nue^.dato := p;
+ nue^.sig := nil;
+  if (l = nil) then 
+   l := nue
+  else begin
+   act := nue;
+   ant := nue;
+end;
+  while (act <> nil) and (act^.dato <> nue^.dato) do begin 
+   ant := act;
+   act := act^.sig;
+  end;
+   if (ant = act) then 
+    l := nue
+   else begin
+    act := nue;
+    ant := nue;
+   end;
+  end;
+end;
+
+
+
+procedure insertarOrdenado (var l : lista; p : record);
+var
+ nue,act,ant : lista;
+begin 
+ new (nue);
+ nue^.dato := p;
+ nue^.sig := nil;
+  if (l = nil) then 
+   l := nue
+  else begin
+   act := l; *
+   ant := l; *
+end;
+  while (act <> nil) and (act^.dato < nue^.dato) do begin 
+   ant := act;
+   act := act^.sig;
+  end;
+   if (ant = act) then 
+    l := nue;
+    nue^.sig := l *
+   else begin
+    ant^.sig := nue;*
+    nue^.sig := act;*
+   end;
+  end;
+end;
+
+
+1) Creo el nuevo nodo
+2) Inserto el dato
+3) El puntero del nuevo nodo esta vacio (nil)
+4) Si la lista esta vacia,l apunta al nuevo nodo
+5) Si la lista NO esta vacia,el actual y el anterior apuntan al primer nodo (L)
+6) Mientras actual sea <> nil (que no termine la lista) y actual^.dato <> nuevo^.dato (elemento a ordenar) recorro la lista (ant := act
+       act := act^.sig);
+7) Si ant = act,el nuevo nodo se inserta al principio (en L)
+8) Sino,el nuevo nodo se ubica en el medio o en el final (ant^.sig := nue
+                                                          nue^.sig := act;)
+
+
+
+procedure insertarOrdenado(var L:lista; j:jugador); *CORRECTO
+var
+  nue: lista;
+  act, ant: lista; {punteros auxiliares para recorrido}
+begin
+  new (nue);
+  nue^.dato := j;
+  act := L; {ubico act y ant al inicio de la lista}
+  ant := L;
+  while( act <> nil)and(j.altura > act^.dato.altura)do
+  begin
+    ant := act;
+    act:= act^.sig;
+  end;
+  if (act = ant) then {al inicio o lista vacía}
+    L:= nue;
+  else {al medio o al final}
+    ant^.sig:= nue;
+  nue^.sig:= act;
+end;
+
+
+
+procedure insert (var l : lista; dato : integer);
+var
+ anc,ant,nue : lista;
+begin 
+ new (nue);
+ nue^.dato := dato;
+ nue^.sig := nil; *FIJARSE EN ESTO*
+  if (l = nil) then 
+   l := nue
+  else begin
+   act := l;
+   ant := l;
+ end;
+  while (act <> nil) and (act^.dato <> nue^.dato) do begin 
+   ant := act;
+   act := act^.sig;
+  end;
+   if (ant = act) then
+    l := nue^.sig;*
+    nue := l;
+   else begin
+    ant^.sig := nue;
+    nue^.sig := act;
+   end;
+  end;
+end;
