@@ -4,11 +4,11 @@ Estos recursos fueron los que me ayudaron a aprobar la materia,algunos de los ej
 
 Tambien aclarar,que algunos ejercicios no estan,ya que fueron hechos en papel.
 
-Para encontrar mas ejercicios,los pueden encontrar en el notion (es hecho por alumnos,no tomarlo como soluciones oficiales) : https://www.notion.so/CADP-12584257b8ee4a50ae36cb074b4dd34a
+Para encontrar mas ejercicios,los pueden encontrar en el [notion]([url](https://www.notion.so/CADP-12584257b8ee4a50ae36cb074b4dd34a)) (es hecho por alumnos,no tomarlo como soluciones oficiales) 
 
 # Modulos de ayuda
 
-Algo que me ayudo mucho a la hora de incorporar estos modulos (sobre todo en la listas) fue analizar el codigo,pensarlo y escribir paso por paso lo que voy haciendo en ese modulo,es muy personal la forma pero creo que esta bueno tenerlo presente
+Algo que me ayudo mucho a la hora de incorporar estos modulos (sobre todo en la listas) fue analizar el codigo,pensarlo y escribir paso por paso lo que voy haciendo en ese modulo,es muy personal la forma pero creo que esta bueno tenerlo presente.
 
 - [Modulos de listas](https://github.com/dntluchini/CADP-2022/tree/main/Modulos/Listas)
 - [Modulos de vectores](https://github.com/dntluchini/CADP-2022/tree/main/Modulos/Vectores)
