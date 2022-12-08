@@ -89,28 +89,3 @@ begin
   end;
 end;
 
-
-1) Creo el nodo
-2) Le asigno el dato
-3) El nuevo nodo no apunta a nada
-4) Si la lista esta vacia,entonces la lista apunta al nuevo nodo
-5) Sino esta vacia,la recorro y me ubico en el ultimo elemento
-6) Inserto en dato (el dato y el siguiente)
-
-procedure agregarAtras (var l : lista; p : record);
-var
- nue,ult : lista;
-begin
- new (nue);
- nue^.dato := p;
- nue^.sig := nil;
-  if (l = nil) then 
-   l := nue
-  else begin 
-   ult := l;
-    while (ult <> nil) do begin *
-     ult^.sig := nue;*
-     ult^.dato := nue;*
-    end;
- end;
-end;
