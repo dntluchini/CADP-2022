@@ -13,3 +13,4 @@ Algo que me ayudo mucho a la hora de incorporar estos modulos **(_sobre todo en 
 - [Modulos de listas](https://github.com/dntluchini/CADP-2022/tree/main/Modulos/Listas)
 - [Modulos de vectores](https://github.com/dntluchini/CADP-2022/tree/main/Modulos/Vectores)
 - [Descomponer un numero](https://github.com/dntluchini/CADP-2022/blob/main/Modulos/Descomponer%20un%20numero%20(contador%20pares%20impares).txt)
+- [Maximos y minimos](https://github.com/dntluchini/CADP-2022/blob/main/Modulos/Maximos%20y%20minimos)
