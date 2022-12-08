@@ -8,7 +8,7 @@ Para encontrar mas ejercicios,los pueden encontrar en el notion (es hecho por al
 
 # Modulos de ayuda
 
-Algo que me ayudo mucho a la hora de incorporar estos modulos (sobre todo en la listas) fue analizar el codigo,pensarlo y escribir paso por paso lo que voy haciendo en ese modulo,es muy personal la
+Algo que me ayudo mucho a la hora de incorporar estos modulos (sobre todo en la listas) fue analizar el codigo,pensarlo y escribir paso por paso lo que voy haciendo en ese modulo,es muy personal la forma pero creo que esta bueno tenerlo presente
 
 - [Modulos de listas](https://github.com/dntluchini/CADP-2022/tree/main/Modulos/Listas)
 - [Modulos de vectores](https://github.com/dntluchini/CADP-2022/tree/main/Modulos/Vectores)
