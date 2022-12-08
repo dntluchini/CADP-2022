@@ -1,0 +1,65 @@
+** Los minimos y/o maximos se pueden inicializar en el programa principal,en el modulo que lo precisen (ejemplo cuando tengan que recorrer una lista,o un vector), o en el mismo modulo del minimo/maximo. **
+** Esto es a gusto personal,a mi particularmente me gusta inicializarlos en el modulo que tengo que recorrer,o en el programa principal,ya que al inicializarlo en el mismo modulo que se comparan los numeros,corremos el riesgo que de el valor que tome ese maximo/minimo,sea siempre el que se inicializa,pero eso depende en el tipo de condicion en el que llamemos al maximo/minimo. **
+** NO SE pueden hacer maximos y minimos EN EL MISMO MODULO. **
+  
+** Retornar 2 maximos. **
+
+procedure max (num : integer; var max1 , max2 : integer);
+begin 
+ max1 := -9999; max2 := -9999;
+ if (num > max1) then begin 
+  max2 := max1;
+  max1 := num;
+ end
+ else if (num > max2) then 
+  max2 := num;
+ end;
+
+
+** Caso en el que tenemos que ademas de los maximos , devolver un dato que tenga que ver con ese maximo. ** (Ej : Los 2 alumnos con mayor promedio)
+
+procedure max (nom : string ;num : integer; var max1 , max2 : integer ; var maxNombre1,maxNombre2 : string);
+begin 
+ max1 := -9999; max2 := -9999;
+ if (num > max1) then begin 
+  max2 := max1;
+  max1 := num;
+  maxNombre2 := maxNombre1;
+  maxNombre1 := nom;
+ end
+ else if (num > max2) then begin
+   max2 := num;
+   maxNombre2 := nom;
+  end;
+end;
+
+** Retornar 2 minimos. **
+
+procedure min (num : integer; var min1 , min2 : integer);
+begin 
+ min1 := 9999; min2 := 9999;
+ if (num < min1) then begin 
+  min2 := min1;
+  min1 := num;
+ end
+ else if (num < min2) then 
+  min2 := num;
+ end;
+ 
+ 
+ ** Caso en el que tenemos que ademas de los minimos , devolver un dato que tenga que ver con ese minimos. ** (Ej : Los 2 alumnos con menor promedio)
+
+procedure min (nom : string ;num : integer; var min1 , min2 : integer ; var minNombre1,minNombre2 : string);
+begin 
+ min1 := 9999; min2 := 9999; 
+ if (num < min1) then begin 
+  min2 := min1;
+  min1 := num;
+  minNombre2 := minNombre1;
+  minNombre1 := nom;
+ end
+ else if (num < min2) then begin
+   min2 := num;
+   minNombre2 := nom;
+  end;
+end;
